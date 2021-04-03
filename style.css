@@ -1,0 +1,58 @@
+* {
+  font-family: "Noto Sans SC", sans-serif;
+  background-color: teal;
+  color: rgba(255, 255, 255, 0.493);
+}
+
+#weather {
+  width: 50%;
+  margin: 15% auto;
+  text-align: center;
+  border-radius: 22px;
+  background: #008080;
+  box-shadow: 20px 20px 60px #006d6d, -20px -20px 60px #009393;
+}
+
+input.searchTerm {
+  border: none;
+  border-bottom: 1px solid;
+  width: 50%;
+  outline: none;
+}
+
+input.searchBtn {
+  border: 1px solid rgba(255, 255, 255, 0.493);
+  outline: none;
+  cursor: pointer;
+}
+
+ul {
+  display: flex;
+  /* border-top: 1px solid rgba(255, 255, 255, 0.493);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.493); */
+  padding: 0px;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style-type: none;
+  font-size: 14px;
+}
+li {
+  padding: 10px 10px;
+}
+
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: rgba(255, 255, 255, 0.493);
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: rgba(255, 255, 255, 0.493);
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: rgba(255, 255, 255, 0.493);
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: rgba(255, 255, 255, 0.493);
+}

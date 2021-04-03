@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 天气</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section id="weather">
+      <header class="weather-header">
+        <h1 class="header-title">Vue 天气</h1>
+      </header>
+      <section class="search">
+        <input
+          v-on:keyup.enter="searchWeather"
+          v-model="searchVal"
+          class="searchTerm"
+          type="text"
+          placeholder="输入城市"
+        />
+        <input
+          v-on:click="searchWeather"
+          class="searchBtn"
+          type="button"
+          value="搜索"
+        />
+        <span></span>
+      </section>
+      <section class="weather-list">
+        <ul>
+          <li v-for="i in weatherArr">
+            {{i.date}}<br />
+            {{i.type}}<br />
+            {{i.low}}<br />
+            {{i.high}}<br />
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+      var data = {
+        searchVal: "",
+        weatherArr: [],
+      };
+      var app = new Vue({
+        el: "#weather",
+        data: data,
+        methods: {
+          searchWeather: function () {
+            var that = this;
+            if (this.searchVal === "") {
+              alert("Enter something");
+            } else {
+              axios
+                .get(
+                  "http://wthrcdn.etouch.cn/weather_mini?city=" + this.searchVal
+                )
+                .then(function (response) {
+                  console.log(response);
+                  that.weatherArr = response.data.data.forecast;
+                })
+                .catch(function (error) {
+                  alert("type error");
+                  console.log(error);
+                });
+            }
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
